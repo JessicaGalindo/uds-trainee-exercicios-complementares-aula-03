@@ -1,0 +1,53 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title> Exercicio 2 </title>
+  
+  <link rel="stylesheet" type="text/css" href="exercicio-2.css">
+</head>
+
+<body>
+  <h2> Exercicio 2 </h2>
+
+  <p>
+    Crie um arquivo html com 10 divs e 1 botão. As divs devem ser circulos
+    vermelhos posicionadas lado a lado via flex-box. Ao clicar no botão o sistema
+    deve calcular um número aleatório de 1 a 10 e pintar a div correspondente
+    de azul. Ao clicar novamente, o sistema deve voltar todas as divs para
+    vermelho e realizar a operação anterior novamente.
+  </p>
+
+  <div>
+    <div id="1" class="circulo"> </div>
+    <div id="2" class="circulo"> </div>
+    <div id="3" class="circulo"> </div>
+    <div id="4" class="circulo"> </div>
+    <div id="5" class="circulo"> </div>
+    <div id="6" class="circulo"> </div>
+    <div id="7" class="circulo"> </div>
+    <div id="8" class="circulo"> </div>
+    <div id="9" class="circulo"> </div>
+    <div id="10" class="circulo"> </div>
+  </div>
+
+  <br>
+  <button onclick="pintaDiv()"> Pinta div </button>
+
+  <script>
+  var pintada = false, num;
+
+  function pintaDiv(){
+    if(pintada){
+      document.getElementById(num.toString()).style.background = "red";
+    }
+    num = random(1, 10);
+    document.getElementById(num.toString()).style.background = "blue";
+    pintada = true;
+  }
+
+  function random(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  </script>
+</body>
+</html>

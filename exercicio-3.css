@@ -1,0 +1,32 @@
+.container{
+  display: inline-block;
+  position: relative;
+}
+
+.container #nomeCartao{
+  position: absolute;
+  top: 30px;
+  left: 40%;
+  font-size: 40px;
+  color: black;
+  text-shadow: 0px 0px 5px black;
+  text-align: center;
+}
+
+.container #telefoneCartao{
+  position: absolute;
+  top: 110px;
+  left: 40px;
+  font-size: 22px;
+  color: black;
+  text-shadow: 0px 0px 5px black;
+}
+
+.container #enderecoCartao{
+  position: absolute;
+  top: 150px;
+  left: 40px;
+  font-size: 22px;
+  color: black;
+  text-shadow: 0px 0px 5px black;
+}
