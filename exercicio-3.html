@@ -4,6 +4,7 @@
   <title> Exercicio 3 </title>
 
   <link rel="stylesheet" type="text/css" href="exercicio-3.css">
+  <link rel="stylesheet" type="text/css" href="exercicio-1.css">
 </head>
 
 <body>
@@ -16,7 +17,7 @@
     as informações preenchidas previamente.
   </p>
 
-  <div>
+  <form>
     <div>
       <label> Nome: </label>
       <input type="text" id="nome" />
@@ -30,35 +31,40 @@
       <input type="text" id="endereco" />
     </div>
     <div id="botao">
-      <button onclick="criarCartao()"> Gerar Cartão de Visita </button>
+      <input type="button" onclick="criarCartao()" value="Gerar Cartão de Visita" />
     </div>
-  </div>
+  </form>
 
   <h2> Cartão de Visita </h2>
 
   <div class="container">
-    <img src="imagem-cartao.jpg">
-
-    <div>
-
-      <label id="nomeCartao"> Nome </label>
-      <label id="telefoneCartao"> Telefone </label>
-      <label id="enderecoCartao"> Endereço </label>
+    <div id="imagem">
+      <!-- <img id="imagem" src="imagem-cartao.jpg"> -->
     </div>
+
+    <label id="nomeCartao"> </label>
+    <label id="telefoneCartao"> </label>
+    <label id="enderecoCartao"> </label>
   </div>
 
   <script>
   function criarCartao(){
     var nome, telefone, endereco;
 
+    document.getElementById("imagem").innerHTML = '<img src="imagem-cartao.jpg">';
+
     nome = document.getElementById("nome").value;
     telefone = document.getElementById("telefone").value;
     endereco = document.getElementById("endereco").value;
 
     document.getElementById("nomeCartao").innerHTML = nome;
-    document.getElementById("telefoneCartao").innerHTML = telefone;
-    document.getElementById("enderecoCartao").innerHTML = endereco;
+    document.getElementById("nomeCartao").style.textAlign="center";
+
+    document.getElementById("telefoneCartao").innerHTML = "Telefone: " +telefone;
+    document.getElementById("enderecoCartao").innerHTML = "Endereço: " +endereco;
+
+    alert("Cartão de Visita gerado com Sucesso!");
   }
-  </script>
+</script>
 </body>
 </html>

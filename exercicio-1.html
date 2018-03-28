@@ -20,7 +20,7 @@
     data atual escrita por extenso.
   </p>
 
-  <div> <!-- <form> -->
+  <form>
     <div>
       <label> Nome completo: </label>
       <input type="text" id="nome" />
@@ -38,12 +38,12 @@
       <input type="text" id="cidade" />
     </div>
     <div id="botao">
-      <button onclick="enviarFormulario()"> Enviar Formulário </button> <!-- type="submit"> Enviar Formulário </button> -->
+      <input type="button" onclick="gerarDeclaracao()" value="Gerar Declaração" />
     </div>
-  </div> <!-- </form> -->
+  </form>
 
   <div>
-    <h2> Gerador de Declarações </h2>
+    <h2> Declaração </h2>
     <p id="geradorP"></p>
     <br>
     <p id="cidadeP"></p>
@@ -51,36 +51,37 @@
   </div>
 
   <script>
-  var nome, rg, cpf, cidade;
+  function gerarDeclaracao(){
+    var nome, rg, cpf, cidade, txt;
 
-  function enviarFormulario(){
     nome = document.getElementById("nome").value;
     rg = document.getElementById("rg").value;
     cpf = document.getElementById("cpf").value;
     cidade = document.getElementById("cidade").value;
 
-    var txt = "Eu, "+nome+", portador do rg "+rg+" e do cpf "+cpf+", declaro estar participando do trainee da uds.";
+    txt = "Eu, "+nome+", portador do rg "+rg+" e do cpf "+cpf+", declaro estar participando do trainee da uds.";
     document.getElementById("geradorP").innerHTML = txt;
 
-    document.getElementById("cidadeP").innerHTML = cidade;
-    document.getElementById("dataP").innerHTML = dataExtensa();
+    txt = cidade+ ", " +dataExtensa();
+    document.getElementById("dataP").innerHTML = txt;
+
+    alert("Declaração gerada com Sucesso!");
   }
 
-  meses = new Array("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
-  semana = new Array("Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado");
-
   function dataExtensa() {
-    alert("to na data");
+    var meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+    var diasSemana = ["Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado"];
+    var hoje, dia, dias, mes, ano, txt;
 
     hoje = new Date();
     dia = hoje.getDate();
     dias = hoje.getDay();
     mes = hoje.getMonth();
     ano = hoje.getYear();
-    if (navigator.appName == "Netscape")
     ano = ano + 1900;
-    diaext = semana[dias] + ", " + dia + " de " + meses[mes] + " de " + ano;
-    return diaext;
+
+    txt = diasSemana[dias] + ", " +dia+ " de " +meses[mes]+ " de " +ano+ ".";
+    return txt;
   }
 
   </script>
