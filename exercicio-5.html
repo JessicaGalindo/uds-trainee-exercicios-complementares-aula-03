@@ -1,0 +1,97 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title> Exercicio 5 </title>
+
+  <!-- <link rel="stylesheet" type="text/css" href="exercicio-4.css"> -->
+</head>
+
+<body>
+  <h2> Exercicio 5 </h2>
+
+  <p>Vamos criar nosso primeiro jogo! O usuário começa o jogo com 100 pontos.
+    Deve ser apresentado 2 radio buttons, com os valores par e impar, e um campo
+    de texto valor da aposta. Após selecionar preencher todos os campos, o
+    usuário deve clicar em um botão jogar, então o sistema deve sortear um
+    número aleatório de 1 à 30, e verificar se este número é par ou impar. Caso
+    o número seja de acordo com o que o usuário apostou, deve-se somar a
+    quantidade de pontos apostados ao seus pontos globais, caso seja diferente
+    deve-se subtrair este valor. Não deve ser possível clicar no botão jogar:
+
+    <ul>
+      <li>Não deve ser aceito nada além de valores numéricos, maior que zero, no campo valor da aposta.</li>
+      <li>O sistema deve apresentar ao usuário qual número foi sorteado e informa-lo se o número é par ou impar.</li>
+      <li>Não deve ser possível clicar no botão jogar</li>
+      Caso o usuário não possua ou tente apostar uma quantidade de pontos maior do que possui. <br>
+      Caso o usuário não informe em qual tipo de número quer apostar.
+    </ul>
+  </p>
+
+  <div>
+    <h2> Pontos: </h2>
+    <label id="pontuacao"> 100 </label>
+  </div>
+
+  <div>
+    <input type="radio" name="radio1" value="par"> Par
+    <input type="radio" name="radio1" value="impar"> Impar
+  </div>
+
+  <label> Valor da Aposta: </label>
+  <input type="number" id="valorAposta" />
+
+  <div>
+    <input type="button" id="botao" onclick="trataErros()" value="Jogar" />
+  </div>
+
+  <script>
+  var pontos = 100, valorAposta, radios;
+
+  function jogar(){
+    var numAleatorio = random(1, 30);
+    var par;
+
+    if(numAleatorio % 2 == 0){
+      par = true;
+    }else{
+      par = false;
+    }
+
+    if (radios[0].checked) {
+      pontos += valorAposta;
+    }else{
+      pontos -= valorAposta;
+    }
+
+    document.getElementById("pontuacao").innerHTML = pontos;
+  }
+
+  function random(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function trataErros(){
+    valorAposta = document.getElementById("valorAposta").value;
+
+    if(isNaN(valorAposta) === true || (valorAposta == "")){ //Não é um numero
+      alert("Impossivel jogar!!! \nInforme um valor para apostar!");
+    }else{
+      if(pontos < valorAposta){
+        alert("Impossivel jogar!!! \nPontuação inferior ao valor da aposta!");
+        document.getElementById("botao").disable = true;
+      }else if(pontos == 0){
+        alert("Impossivel jogar!!! \nPontuação igual ZERO!");
+        document.getElementById("botao").disable = true;
+      }
+    }
+
+    radios = document.getElementsByName("radio1");
+    if(radios[0].checked == false && radios[1].checked == false){
+      alert("Impossivel jogar!!! \nInforme em qual tipo de numero quer apostar!");
+    }else{
+      jogar();
+    }
+  }
+  </script>
+</body>
+</html>

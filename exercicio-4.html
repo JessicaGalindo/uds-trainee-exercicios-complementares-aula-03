@@ -1,0 +1,171 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title> Exercicio 4 </title>
+
+  <link rel="stylesheet" type="text/css" href="exercicio-4.css">
+</head>
+
+<body>
+  <h2> Exercicio 4 </h2>
+
+  <p>
+    Crie um formulário com 10 questões de verdadeiro ou falso. O usuário deve
+    preencher um formulário com as questões, cada questão deve ter dois radio
+    buttons com as respostas possíveis. Ao final do formulário deve existir um
+    botão enviar. Ao clicar no botão deve-se validar as questões, para cada
+    resposta preenchida corretamente deve-se somar 1 ponto, para cada resposta
+    errada ou em branco deve-se somar 0 pontos, e então apresentar a pontuação
+    ao usuário.
+  </p>
+
+  <form>
+    <h1 text-align="center"> Questionário </h1> <br>
+    <div>
+      <label> Questão 01: </label>
+      1 + 1 = 3?
+      <!-- <input type="text" id="questao01" /> -->
+
+      <div class="divRadio">
+        <input type="radio" name="radio01" value="verdadeiro"> Verdadeiro
+        <input type="radio" name="radio01" value="falso"> Falso
+      </div>
+    </div>
+
+    <div>
+      <label> Questão 02: </label>
+      3 + 3 = 6?
+      <!-- <input type="text" id="questao02" /> -->
+
+      <div class="divRadio">
+        <input type="radio" name="radio02" value="verdadeiro"> Verdadeiro
+        <input type="radio" name="radio02" value="falso"> Falso
+      </div>
+    </div>
+
+    <div>
+      <label> Questão 03: </label>
+      Jéssica possui 8 bombons, Alexander comeu 7. Sobraram 4 bombons?
+      <!-- <input type="text" id="questao03" /> -->
+
+      <div class="divRadio">
+        <input type="radio" name="radio03" value="verdadeiro"> Verdadeiro
+        <input type="radio" name="radio03" value="falso"> Falso
+      </div>
+    </div>
+
+    <div>
+      <label> Questão 04: </label>
+      Dia 30 de Março é feriado?
+      <!-- <input type="text" id="questao04" /> -->
+
+      <div class="divRadio">
+        <input type="radio" name="radio04" value="verdadeiro"> Verdadeiro
+        <input type="radio" name="radio04" value="falso"> Falso
+      </div>
+    </div>
+
+    <div>
+      <label> Questão 05: </label>
+      O trainee da UDS ajudou muito no aprendizado de front-end?
+      <!-- <input type="text" id="questao05" /> -->
+
+      <div class="divRadio">
+        <input type="radio" name="radio05" value="verdadeiro"> Verdadeiro
+        <input type="radio" name="radio05" value="falso"> Falso
+      </div>
+    </div>
+
+    <div>
+      <label> Questão 06: </label>
+      2 * 9 = 20?
+      <!-- <input type="text" id="questao06" /> -->
+
+      <div class="divRadio">
+        <input type="radio" name="radio06" value="verdadeiro"> Verdadeiro
+        <input type="radio" name="radio06" value="falso"> Falso
+      </div>
+    </div>
+
+    <div>
+      <label> Questão 07: </label>
+      Canhoto pode fazer direito?
+      <!-- <input type="text" id="questao07" /> -->
+
+      <div class="divRadio">
+        <input type="radio" name="radio07" value="verdadeiro"> Verdadeiro
+        <input type="radio" name="radio07" value="falso"> Falso
+      </div>
+    </div>
+
+    <div>
+      <label> Questão 08: </label>
+      Estamos em 2018?
+      <!-- <input type="text" id="questao08" /> -->
+
+      <div class="divRadio">
+        <input type="radio" name="radio08" value="verdadeiro"> Verdadeiro
+        <input type="radio" name="radio08" value="falso"> Falso
+      </div>
+    </div>
+
+    <div>
+      <label> Questão 09: </label>
+      (3 - 2) + 1 = 5?
+      <!-- <input type="text" id="questao09" /> -->
+
+      <div class="divRadio">
+        <input type="radio" name="radio09" value="verdadeiro"> Verdadeiro
+        <input type="radio" name="radio09" value="falso"> Falso
+      </div>
+    </div>
+
+    <div>
+      <label> Questão 10: </label>
+      Hoje NÃO é dia de entrega dos exercicios da aula 03.
+      <!-- <input type="text" id="questao10" /> -->
+
+      <div class="divRadio">
+        <input type="radio" name="radio10" value="verdadeiro"> Verdadeiro
+        <input type="radio" name="radio10" value="falso"> Falso
+      </div>
+    </div>
+
+    <div>
+      <input type="button" id="botao" onclick="enviarRespostas()" value="Enviar Respostas" />
+    </div>
+  </form>
+
+  <script>
+  var pontos = 0;
+
+  function enviarRespostas(){
+
+    verificaSelecao("radio01", "falso");
+    verificaSelecao("radio02", "verdadeiro");
+    verificaSelecao("radio03", "falso");
+    verificaSelecao("radio04", "verdadeiro");
+    verificaSelecao("radio05", "verdadeiro");
+    verificaSelecao("radio06", "falso");
+    verificaSelecao("radio07", "verdadeiro");
+    verificaSelecao("radio08", "verdadeiro");
+    verificaSelecao("radio09", "falso");
+    verificaSelecao("radio10", "falso");
+
+    alert("Sua pontuação foi: " +pontos);
+  }
+
+  function verificaSelecao(name, respostaCorreta){
+    var radios = document.getElementsByName(name);
+
+    for (var i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        if(radios[i].value == respostaCorreta){
+          pontos++;
+        }
+      }
+    }
+  }
+  </script>
+</body>
+</html>
